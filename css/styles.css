@@ -36,8 +36,10 @@
 :root {
   --color-brand-light: #819b57;
   --color-brand-dark: #465929;
+  --color-brand-grey: #cfcfbc;
   --color-primary-light: #faf4ea;
   --color-primary-dark: #31261a;
+  --color-secondary-dark: #a28268;
 }
 
 /* Base */
@@ -48,6 +50,7 @@
 body {
   margin: 0;
   color: var(--color-primary-dark);
+  background-color: var(--color-primary-light);
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -69,6 +72,8 @@ address {
 }
 
 ul {
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 }
 
@@ -117,12 +122,40 @@ ul {
 
 .link:hover {
   color: var(--color-brand-light);
-  font-weight: 600;
 }
 
+/* Header */
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  gap: 40px;
+}
+.menu {
+  display: flex;
+  gap: 64px;
+  flex-grow: 1;
+  justify-content: center;
+}
 /* Hero section */
 .hero-section {
   padding: 272px 0;
+  background-image: url('../images/couple-in-bakery.jpg');
+  /*       linear-gradient(
+      102.76deg,
+      rgba(18, 18, 17, 0.78) 2.03%,
+      rgba(18, 18, 17, 0.6) 58.46%,
+      rgba(18, 18, 17, 0) 90.36%
+    ); */
+
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
 }
 .hero-title {
   margin-bottom: 0;
@@ -137,9 +170,14 @@ ul {
 }
 
 /* Advantages */
-.advantages-list {
-  color: var(--color-primary-light);
+.advantages-section {
+  padding: 16px 0;
   background-color: var(--color-brand-light);
+}
+.advantages-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
 }
 .advantages-item {
   color: var(--color-primary-light);
@@ -150,6 +188,10 @@ ul {
   font-size: 64px;
   font-weight: 900;
   line-height: 1.3;
+}
+
+.section-title.centered {
+  text-align: center;
 }
 
 .section-title .accent {
@@ -165,7 +207,14 @@ ul {
 .traditions-section {
   padding-top: 96px;
 }
-
+.traditions-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+.traditions-content {
+  max-width: 710px;
+}
 .traditions-text .brand {
   color: var(--color-brand-light);
   font-weight: 600;
@@ -175,10 +224,30 @@ ul {
   text-transform: uppercase;
 }
 
+.traditions-text.limited {
+  max-width: 330px;
+}
+
 /* Chefs section */
 .chefs-title {
-  margin-bottom: 80px;
+  max-width: 540px;
+  margin: 0 auto 80px;
 }
+
+.chefs-title::before,
+.chefs-title::after {
+  display: block;
+  width: 352px;
+  border: 2px solid var(--color-brand-grey);
+  content: '';
+}
+
+.chef-photo {
+  border-radius: 4px 4px 4px 200px;
+  box-shadow: -16px 16px 0 0 var(--color-primary-light),
+    -16px 16px 0 2px var(--color-secondary-dark);
+}
+
 .chef-title {
   margin-bottom: 16px;
   font-weight: 600;
@@ -186,12 +255,50 @@ ul {
 }
 
 /* Formats section */
-.format-title {
+.formats-title {
   margin-bottom: 80px;
 }
 
-.format-list {
+/* Carousel */
+.carousel-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--color-primary-dark);
+  border-radius: 50%;
+  fill: var(--color-primary-dark);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.carousel-button:hover {
+  fill: var(--color-primary-light);
+  background-color: var(--color-primary-dark);
+}
+
+.formats-list {
+  display: flex;
   color: var(--color-primary-light);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.formats-item {
+  flex-basis: calc((100% - 40px) / 3);
+}
+.format-card {
+  width: 350px;
+  height: 444px;
+  padding: 24px;
+  background-image: linear-gradient(
+    180deg,
+    rgba(49, 38, 26, 0) 55.21%,
+    rgba(49, 38, 26, 0.71) 72.92%,
+    var(--color-primary-dark) 100%
+  );
+  border-radius: 16px;
 }
 .format-title {
   font-weight: 600;
@@ -209,6 +316,13 @@ ul {
 }
 
 /* Footer */
+.footer {
+  background-image: url('../images/footer-background.png');
+  background-color: var(--color-primary-dark);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 .address-link {
   font-weight: 300;
   font-size: 16px;
@@ -218,8 +332,14 @@ ul {
 .address-link:hover {
   color: var(--color-brand-light);
 }
+.address-icon {
+  fill: var(--color-primary-light);
+}
+.address-icon:hover {
+  fill: var(--color-brand-light);
+}
 
 .address-copyright {
   font-size: 14px;
-  color: #a28268;
+  color: var(--color-secondary-dark);
 }
