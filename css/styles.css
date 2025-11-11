@@ -124,6 +124,7 @@ a {
   color: var(--color-primary-light);
   font-weight: 400;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
 .link:hover {
@@ -131,6 +132,13 @@ a {
 }
 
 /* Header */
+.header {
+  position: absolute;
+  padding-top: 32px;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 .header-container {
   display: flex;
   align-items: center;
@@ -151,14 +159,13 @@ a {
 /* Hero section */
 .hero-section {
   padding: 272px 0;
-  background-image: url('../images/couple-in-bakery.jpg');
-  /*       linear-gradient(
+  background-image: linear-gradient(
       102.76deg,
       rgba(18, 18, 17, 0.78) 2.03%,
       rgba(18, 18, 17, 0.6) 58.46%,
       rgba(18, 18, 17, 0) 90.36%
-    ); */
-
+    ),
+    url('../images/couple-in-bakery.jpg');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -236,18 +243,25 @@ a {
 
 /* Chefs section */
 .chefs-title {
-  max-width: 540px;
+  position: relative;
   margin: 0 auto 80px;
 }
 
 .chefs-title::before,
 .chefs-title::after {
-  display: block;
+  position: absolute;
+  bottom: 24px;
   width: 352px;
   border: 2px solid var(--color-brand-grey);
   content: '';
 }
 
+.chefs-title::before {
+  left: 0;
+}
+.chefs-title::after {
+  right: 0;
+}
 .chef-list {
   display: flex;
   gap: 40px 30px;
@@ -307,6 +321,10 @@ a {
   cursor: pointer;
 }
 
+.carousel-button.next {
+  transform: rotate(180deg);
+}
+
 .carousel-button:hover {
   fill: var(--color-primary-light);
   background-color: var(--color-primary-dark);
@@ -332,6 +350,10 @@ a {
     var(--color-primary-dark) 100%
   );
   border-radius: 16px;
+  transition: transform 0.3s;
+}
+.format-card:hover {
+  transform: scale(1.05);
 }
 .format-title {
   font-weight: 600;
@@ -365,9 +387,6 @@ a {
   gap: 32px;
 }
 
-.contact-form {
-}
-
 .contact-map {
   border: none;
   border-radius: 16px;
@@ -376,12 +395,34 @@ a {
 
 /* Footer */
 .footer {
+  position: relative;
   padding: 32px 0;
   background-image: url('../images/footer-background.png');
   background-color: var(--color-primary-dark);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  overflow: hidden;
+}
+.footer::before,
+.footer::after {
+  position: absolute;
+  background-repeat: no-repeat;
+  content: '';
+}
+.footer::before {
+  width: 181px;
+  height: 342px;
+  background-image: url(../images/decor-bread-small.png);
+  left: 0px;
+  top: 110px;
+}
+.footer::after {
+  width: 305px;
+  height: 330px;
+  background-image: url(../images/decor-bread-large.png);
+  right: 0px;
+  top: 0px;
 }
 .footer-container {
   display: flex;
@@ -420,4 +461,91 @@ a {
 .address-copyright {
   font-size: 14px;
   color: var(--color-secondary-dark);
+}
+/* Modal */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.modal {
+  position: relative;
+  padding: 128px;
+  width: 100%;
+  height: 100%;
+  max-width: 880px;
+  max-height: 880px;
+  background-color: var(--color-primary-light);
+  border-radius: 32px;
+  overflow-y: auto;
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal-btn-close {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Form */
+.form-label {
+  display: block;
+}
+.form-field {
+  position: relative;
+  margin-bottom: 32px;
+}
+.form-label {
+  position: absolute;
+  top: 16px;
+  left: 42px;
+  font-size: 16px;
+  line-height: 1.17;
+  color: var(--color-secondary-dark);
+  transition: transform 0.3s;
+}
+.form-field:focus-within .form-label{
+  transform: translate(-36px, -36px);
+}
+.form-input {
+  width: 100%;
+  padding: 16px 42px;
+  background-color: transparent;
+  border: 1px, solid, var(--color-secondary-dark);
+  border-radius: 8px;
+}
+.form-input:focus {
+  border-color: var(--color-brand-light);
+  outline: none;
+}
+.form-button{
+  display: block;
+  margin: 0 auto 24px;
+}
+
+.form-terms{
+  margin: 0 auto;
+  max-width: 220px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+.form-terms-link{
+  color: var(--color-primary-dark);
+  text-underline-offset: 2px;
 }
